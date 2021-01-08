@@ -9,6 +9,19 @@ namespace Module16Task1
 {
     class Program
     {
+        public static void DeleteData(DirectoryInfo d)
+        {          
+            FileInfo[] files = d.GetFiles();
+            foreach (FileInfo f in files)
+            {
+                f.Delete();
+            }
+            DirectoryInfo[] dis = d.GetDirectories();
+            foreach (DirectoryInfo di in dis)
+            {
+                di.Delete();
+            }           
+        }
         static void Main(string[] args)
         {
             try
@@ -23,8 +36,8 @@ namespace Module16Task1
                     var end = directoryInfo.LastWriteTime;
                     if (start - end >= TimeSpan.FromMinutes(30))
                     {
-                        directoryInfo.Delete(true);
-                        Console.WriteLine("Папка удалена");
+                        DeleteData(directoryInfo);
+                        Console.WriteLine("данные удалены");
                     }
                     else { Console.WriteLine("Ничего не удалено"); }
                 }          

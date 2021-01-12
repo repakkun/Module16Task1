@@ -10,7 +10,7 @@ namespace Module16Task1
     class Program
     {
         public static void DeleteData(DirectoryInfo d)
-        {          
+        {    
             FileInfo[] files = d.GetFiles();
             foreach (FileInfo f in files)
             {
@@ -19,8 +19,10 @@ namespace Module16Task1
             DirectoryInfo[] dis = d.GetDirectories();
             foreach (DirectoryInfo di in dis)
             {
-                di.Delete();
-            }           
+                di.Delete(true);
+            }        
+          
+                      
         }
         static void Main(string[] args)
         {
